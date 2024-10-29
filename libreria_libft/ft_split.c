@@ -83,6 +83,19 @@ void	put_array(char **arrstr, const char *s, char c)
 	arrstr[i] = NULL;
 }
 
+static	void free_array(char **arrstr)
+{
+	char	**temp;
+
+	temp = arrstr;
+	while (*temp)
+	{
+		free(*temp);
+		temp++;
+	}
+	free(arrstr);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**arrstr;
