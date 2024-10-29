@@ -35,6 +35,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ptr = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!ptr)
 		return (NULL);
-	ft_strlcpy(ptr, &s1[start], len_s1 - start);
+	ft_strlcpy(ptr, &s1[start], end - start + 1);
+	ptr[end - start] = '\0';
 	return (ptr);
 }
