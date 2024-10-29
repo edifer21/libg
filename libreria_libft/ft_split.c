@@ -12,35 +12,18 @@
 
 #include "libft.h"
 
-char	*put_word(const char *start, const char *ptr)
-{
-	size_t	len_word;
-	char	*arrstr;
-
-	len_word = ptr - start;
-	arrstr = (char *) malloc ((len_word + 1) * sizeof(char));
-	if (!arrstr)
-		return (NULL);
-	ft_memcpy(arrstr, start, len_word);
-	arrstr[len_word] = '\0';
-	return (arrstr);
-}
-
 int	count_c( const char *s, char c)
 {
-	int		i;
-	size_t	in_word;
+	size_t		i;
+	int			in_word;
 
 	i = 0;
 	in_word = 0;
-	while (*s == c)
-		s++;
-	while (*s != '\0')
+	while (*s)
 	{
 		if (*s == c)
 		{
-			if (in_word)
-				in_word = 0;
+			in_word = 0;
 		}
 		else
 		{
@@ -55,30 +38,45 @@ int	count_c( const char *s, char c)
 	return (i);
 }
 
-void	put_array(char **arrstr, const char *s, char c)
+void	*ft_free(char **split, size_t num)
 {
-	const char	*start;
-	int			i;
+	size_t	i;
 
 	i = 0;
-	start = s;
+	while (i < num)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+	return (NULL);
+}
+
+char	**ft_process_words(const char *s, char c, char **lst)
+{
+	size_t	word_len;
+	size_t	i;
+	const char	*start;
+
+	i = 0;
 	while (*s)
 	{
-		if (*s == c)
+		while (*s == c && *s)
+			s++;
+		if (*s)
 		{
-			if (start < s)
-			{
-				arrstr[i++] = put_word(start, s);
-			}
-			start = s + 1;
+			start = s;
+			while (*s && *s != c)
+				s++;
+			word_len = s - start;
+			lst[i] = ft_substr(start, 0, word_len);
+			if (!lst[i])
+				return (ft_free(lst, i));
+			i++;
 		}
-		s++;
 	}
-	if (start < s)
-	{
-		arrstr[i++] = put_word(start, s);
-	}
-	arrstr[i] = NULL;
+	lst[i] = NULL;
+	return (lst);
 }
 
 char	**ft_split(char const *s, char c)
@@ -86,7 +84,7 @@ char	**ft_split(char const *s, char c)
 	char	**arrstr;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	arrstr = malloc((count_c(s, c) + 1) * sizeof(char *));
 	if (!arrstr)
 		return (NULL);
