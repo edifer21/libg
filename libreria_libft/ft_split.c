@@ -54,8 +54,8 @@ void	*ft_free(char **split, size_t num)
 
 char	**ft_process_words(const char *s, char c, char **lst)
 {
-	size_t	word_len;
-	size_t	i;
+	size_t		word_len;
+	size_t		i;
 	const char	*start;
 
 	i = 0;
