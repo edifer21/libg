@@ -88,5 +88,5 @@ char	**ft_split(char const *s, char c)
 	arrstr = malloc((count_c(s, c) + 1) * sizeof(char *));
 	if (!arrstr)
 		return (NULL);
-	return (ft_process_words(s, c, lst));
+	return (ft_process_words(s, c, arrstr));
 }
