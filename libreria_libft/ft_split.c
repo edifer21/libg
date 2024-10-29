@@ -28,8 +28,8 @@ char	*put_word(const char *start, const char *ptr)
 
 int	count_c( const char *s, char c)
 {
-	int	i;
-	int	in_word;
+	int		i;
+	size_t	in_word;
 
 	i = 0;
 	in_word = 0;
@@ -85,6 +85,8 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arrstr;
 
+	if (!s)
+		return (0);
 	arrstr = malloc((count_c(s, c) + 1) * sizeof(char *));
 	if (!arrstr)
 		return (NULL);

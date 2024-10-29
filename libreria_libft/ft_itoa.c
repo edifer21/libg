@@ -16,6 +16,8 @@ int	get_num_len(int n)
 {
 	int	len;
 
+	if (n == 0)
+		return (1);
 	len = (n <= 0);
 	while (n)
 	{
