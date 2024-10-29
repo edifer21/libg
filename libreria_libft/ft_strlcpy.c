@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patferna <patferna@student.42madrid.com>   #+#  +:+       +#+        */
+/*   By: jquinde- < jquinde-@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-10-11 10:45:49 by patferna          #+#    #+#             */
-/*   Updated: 2024-10-11 10:45:49 by patferna         ###   ########.fr       */
+/*   Created: 2024/10/11 10:45:49 by patferna          #+#    #+#             */
+/*   Updated: 2024/10/29 14:58:34 by jquinde-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		{
 			i++;
 		}
-		return i;
+		return (i);
 	}
 	{
 		while (src[i] != '\0' && i < (size - 1))
