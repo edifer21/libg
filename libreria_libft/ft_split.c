@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-/*
 char	*put_word(const char *start, const char *ptr)
 {
 	size_t	len_word;
@@ -26,7 +25,6 @@ char	*put_word(const char *start, const char *ptr)
 	arrstr[len_word] = '\0';
 	return (arrstr);
 }
-*/
 
 int	count_c( const char *s, char c)
 {
@@ -70,7 +68,7 @@ void	put_array(char **arrstr, const char *s, char c)
 		{
 			if (start < s)
 			{
-				arrstr[i++] = ft_strlcpy(&arrstr[i], s, (s - start) + 1);
+				arrstr[i++] = put_word(start, s);
 			}
 			start = s + 1;
 		}
@@ -81,19 +79,6 @@ void	put_array(char **arrstr, const char *s, char c)
 		arrstr[i++] = put_word(start, s);
 	}
 	arrstr[i] = NULL;
-}
-
-static	void free_array(char **arrstr)
-{
-	char	**temp;
-
-	temp = arrstr;
-	while (*temp)
-	{
-		free(*temp);
-		temp++;
-	}
-	free(arrstr);
 }
 
 char	**ft_split(char const *s, char c)
